@@ -32,9 +32,8 @@ ${NAME}:	${OBJS}
 				${AR} ${NAME} ${OBJS}
 				ranlib ${NAME}
 
-bonus:		${OBJS} ${OBJB}
-				${AR} ${NAME} ${OBJB}
-				ranlib ${NAME}
+bonus:		all ${OBJB}
+			@make OBJS="${OBJB}"
 
 all:		${NAME}
 
@@ -44,6 +43,6 @@ clean:
 fclean: 	clean
 				${RM} ${NAME}
 
-re: 		fclean all bonus
+re: 		fclean bonus
 
 .PHONY:		all clean fclean re
